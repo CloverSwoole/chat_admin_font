@@ -24,15 +24,23 @@ function getNowRouter(asyncRouterMap, to) {
 
 }
 
+/**
+ * 许可导航
+ * @type {{mutations: {SET_ROUTERS: permission.mutations.SET_ROUTERS, SET_NOW_ROUTERS: permission.mutations.SET_NOW_ROUTERS}, state: {siderbar_routers: [], routers: *, addRouters: []}, actions: {getNowRoutes({commit: *}, *=): *, GenerateRoutes({commit?: *}, *): *}}}
+ */
 const permission = {
     state: {
         routers: constantRouterMap,
         addRouters: [],
         siderbar_routers: [],
     },
+    /**
+     * 变化
+     */
     mutations: {
         SET_ROUTERS: (state, routers) => {
             state.addRouters = routers;
+            state.siderbar_routers = routers;
             state.routers = constantRouterMap.concat(routers);
             // state.routers.forEach(function(e){
             //     if(e.name==="首页"){
@@ -60,7 +68,17 @@ const permission = {
         }
 
     },
+    /**
+     * 操作
+     */
     actions: {
+        /**
+         * 生成路由
+         * @param commit
+         * @param data
+         * @returns {Promise<unknown>}
+         * @constructor
+         */
         GenerateRoutes({commit}, data) {
             return new Promise(resolve => {
                 /**
@@ -89,6 +107,12 @@ const permission = {
                 });
             })
         },
+        /**
+         * 获取路由
+         * @param commit
+         * @param data
+         * @returns {Promise<unknown>}
+         */
         getNowRoutes({commit}, data) {
             return new Promise(resolve => {
                 //data => to
@@ -98,5 +122,7 @@ const permission = {
         },
     },
 };
-
+/**
+ * 导出导航许可
+ */
 export default permission;

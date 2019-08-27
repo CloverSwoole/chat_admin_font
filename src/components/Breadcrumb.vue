@@ -25,7 +25,6 @@ export default {
       return index === this.list.length - 1
     },
     showName (item) {
-      console.log(this.list)
       if (item.meta && item.meta.label) {
         item = item.meta && item.meta.label
       }

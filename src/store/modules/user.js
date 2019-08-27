@@ -1,4 +1,4 @@
-import { loginByEmail, logout, getInfo } from 'api/login';
+import { loginByUserName, logout, getInfo } from '@/api/login';
 import Cookies from 'js-cookie';
 
 const user = {
@@ -18,7 +18,9 @@ const user = {
       articlePlatform: []
     }
   },
-
+  /**
+   * 变动
+   */
   mutations: {
     SET_AUTH_TYPE: (state, type) => {
       state.auth_type = type;
@@ -60,27 +62,38 @@ const user = {
       state.user = '';
     }
   },
-
+  /**
+   * 操作
+   */
   actions: {
-    // 邮箱登录
-    LoginByEmail({ commit }, userInfo) {
-      const email = userInfo.email.trim();
+    /**
+     * 邮箱登录
+     * @param commit
+     * @param userInfo
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
+    LoginByUserName({ commit }, userInfo) {
+      const username = userInfo.username.trim();
       return new Promise((resolve, reject) => {
-        loginByEmail(email, userInfo.password).then(response => {
+        loginByUserName(username, userInfo.password).then(response => {
           const data = response.data;
-          console.log(response.data);
-          Cookies.set('Admin-Token', response.data.token);
+          window.localStorage.setItem('admin-token',response.data.token);
+          // Cookies.set('Admin-Token', response.data.token);
           commit('SET_TOKEN', data.token);
-          commit('SET_EMAIL', email);
           resolve();
         }).catch(error => {
           reject(error);
         });
       });
     },
-
-
-    // 获取用户信息
+    /**
+     * 获取用户信息
+     * @param commit
+     * @param state
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
@@ -97,7 +110,14 @@ const user = {
       });
     },
 
-    // 第三方验证登录
+    /**
+     * 第三方验证登录
+     * @param commit
+     * @param state
+     * @param code
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
     LoginByThirdparty({ commit, state }, code) {
       return new Promise((resolve, reject) => {
         commit('SET_CODE', code);
@@ -112,7 +132,13 @@ const user = {
     },
 
 
-    // 登出
+    /**
+     * 登出
+     * @param commit
+     * @param state
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
@@ -126,17 +152,27 @@ const user = {
       });
     },
 
-    // 前端 登出
+    /**
+     * 前端 登出
+     * @param commit
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
     FedLogOut({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '');
         Cookies.remove('Admin-Token');
-        alert("has logout");
         resolve();
       });
     },
 
-    // 动态修改权限
+    /**
+     * 动态修改权限
+     * @param commit
+     * @param role
+     * @returns {Promise<unknown>}
+     * @constructor
+     */
     ChangeRole({ commit }, role) {
       return new Promise(resolve => {
         commit('SET_ROLES', [role]);

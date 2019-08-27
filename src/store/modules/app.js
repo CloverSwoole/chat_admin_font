@@ -9,6 +9,9 @@ const app = {
     livenewsChannels: Cookies.get('livenewsChannels') || '[]',
     visitedViews: []
   },
+  /**
+   * 变动
+   */
   mutations: {
     TOGGLE_SIDEBAR: state => {
       if (state.sidebar.opened) {
@@ -27,6 +30,9 @@ const app = {
       state.visitedViews.splice(index, 1)
     }
   },
+  /**
+   * 操作
+   */
   actions: {
     ToggleSideBar: ({ commit }) => {
       commit('TOGGLE_SIDEBAR')

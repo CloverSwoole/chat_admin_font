@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <nav class="sidebar-nav">
-      <sidebar-item :routes='siderbar_routers.children'></sidebar-item>
+      <sidebar-item :routes='siderbar_routers'></sidebar-item>
 
     </nav>
   </div>

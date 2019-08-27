@@ -4,11 +4,10 @@ import App from './App';
  * 导入路由
  */
 import router from './router';
-import store from './store';
 /**
- * mockjs
+ * 引入Vuex
  */
-import './mock/index.js';  // 该项目所有请求使用mockjs模拟
+import store from './store';
 /**
  * 废弃
  */

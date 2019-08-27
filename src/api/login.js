@@ -1,15 +1,18 @@
 import fetch from 'utils/fetch';
+import axiosService from '@/utils/axiosService';
 
-export function loginByEmail(email, password) {
+/**
+ * 用户名登录
+ * @param username
+ * @param password
+ * @returns {*|boolean|AxiosPromise}
+ */
+export function loginByUserName(username, password) {
   const data = {
-    email,
+    username,
     password
   };
-  return fetch({
-    url: '/login/loginbyemail',
-    method: 'post',
-    data
-  });
+  return axiosService.getService().post('/Admin/Auth/login',data);
 }
 
 export function logout() {
