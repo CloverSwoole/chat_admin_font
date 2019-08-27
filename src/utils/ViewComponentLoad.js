@@ -1,4 +1,3 @@
-import Full from "./../containers/Full";
 import Dashboard from "./../views/Dashboard";
 import Delivery from "./../views/Delivery";
 import Introduction from "./../views/Introduction";
@@ -14,7 +13,6 @@ import NavigationAdd from "./../views/navigation/NavigationAdd";
  */
 const ViewComponentLoad = {
     lists: {
-        "@/containers/Full.vue": Full, // 主一级导航
         "@/views/Dashboard.vue": Dashboard, // 主一级导航的控制台
         "@/views/Delivery.vue": Delivery, // 运费模板
         "@/views/Introduction.vue": Introduction, // 介绍页面
