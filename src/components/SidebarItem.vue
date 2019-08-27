@@ -12,7 +12,6 @@
                         {{ item.name}}
                     </div>
                     <ul class="nav-dropdown-items" v-if="item.children&&item.children.length > 0">
-                        <!--开始遍历二级菜单-->
                         <li class="nav-item" v-for="child in item.children" v-if='!child.hidden'>
                             <router-link tag="div" class="nav-dropdown-toggle" :to="item.path" v-if="child.children&&child.children.length <= 0">
                                     <Icon type="ios-arrow-right"></Icon>
@@ -30,7 +29,6 @@
                                </router-link>
                             </ul>
                         </li>
-                        <!--二级菜单遍历完毕-->
                     </ul>
                 </li>
             </ul>
@@ -47,6 +45,11 @@
         props: {
             routes: {
                 type: Array
+            }
+        },
+        data() {
+            return {
+                
             }
         },
         mounted() {
@@ -72,6 +75,9 @@
     .nav-noe-item{
         width: 92px;
         height: 40px;
+    }
+    .nav-noe-item:hover{
+        background: #666;
     }
     .nav-noe-list{
         background: #444;
