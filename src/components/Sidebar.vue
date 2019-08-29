@@ -4,7 +4,7 @@
             <div class="sidebar">
                 <div class="left-nav-lists">
                     <div class="left-nav-item" v-for="(item,index) in siderbar_routers">
-                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true)" v-if="item.children.length > 0">
+                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true,name)" v-if="item.children.length > 0" :class="{'aaa':item.name === activeItem}">
                             <Icon :type="item.icon" color="white"/>
                             {{ item.name}}
                         </div>
@@ -39,7 +39,15 @@
             ])
         },
         data(){
-            return {};
+            return {
+                activeItem:'',
+            };
+        },
+        watch:{
+            $route(val){
+                this.activeItem = val.matched[0].name;
+                console.log(this.activeItem)
+            }
         },
         methods: {
             handleClick(index) {
@@ -54,7 +62,7 @@
              * @param path
              * @constructor
              */
-            GoToRoute(path,len)
+            GoToRoute(path,len,name)
             {
                 var e = window.event || arguments.callee.caller.arguments[0];
                 for(var index in e.target.parentElement.parentElement.childNodes){
@@ -185,5 +193,9 @@
         /*z-index: 9999;*/
         height: auto;
         margin: 5px;
+    }
+    .active{
+        background: rgb(89, 113, 250);
+        color: #fff;
     }
 </style>
