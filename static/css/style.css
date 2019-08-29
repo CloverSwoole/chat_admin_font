@@ -2783,7 +2783,7 @@ base-chart.chart {
 
 .sidebar-fixed .sidebar {
     position: fixed;
-    width: 224px;
+    /* width: 224px; */
     height: 100%
 }
 
@@ -2792,9 +2792,11 @@ base-chart.chart {
 }
 
 .sidebar-fixed .app-footer, .sidebar-fixed .main {
-    margin-left: 200px
+    margin-left: 94px
 }
-
+.left-nav-right .main{
+    margin-left: 200px;
+}
 .sidebar-fixed.sidebar-hidden .app-footer, .sidebar-fixed.sidebar-hidden .main {
     margin-left: 0
 }
@@ -2937,13 +2939,13 @@ base-chart.chart {
 
     .sidebar {
         position: fixed;
-        width: 220px;
+        /* width: 220px; */
         height: 100%;
         margin-left: -220px
     }
 
     .sidebar .nav, .sidebar .sidebar-nav {
-        width: 220px !important
+        width: 94px !important
     }
 
     .app-footer, .main {
@@ -2955,7 +2957,7 @@ base-chart.chart {
     }
 
     .sidebar-mobile-show .sidebar {
-        width: 220px;
+        width: 94px;
         margin-left: 0
     }
 
@@ -2965,7 +2967,10 @@ base-chart.chart {
 
     .sidebar-mobile-show .main {
         margin-right: -220px !important;
-        margin-left: 220px !important
+        margin-left: 94px !important
+    }
+    .left-nav-right .main{
+        margin-left: 200px !important
     }
 }
 

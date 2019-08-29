@@ -4,7 +4,7 @@
             <div class="sidebar">
                 <div class="left-nav-lists">
                     <div class="left-nav-item" v-for="(item,index) in siderbar_routers">
-                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path)" v-if="item.children.length > 0">
+                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true)" v-if="item.children.length > 0">
                             <Icon :type="item.icon" color="white"/>
                             {{ item.name}}
                         </div>
@@ -54,7 +54,7 @@
              * @param path
              * @constructor
              */
-            GoToRoute(path)
+            GoToRoute(path,len)
             {
                 var e = window.event || arguments.callee.caller.arguments[0];
                 for(var index in e.target.parentElement.parentElement.childNodes){
@@ -64,6 +64,11 @@
                 }
                 e.target.parentElement.classList.toggle('one-selected');
                 this.$router.push({path:path});
+                if(len){
+                    document.body.classList.add('left-nav-right')
+                }else{
+                    document.body.classList.remove('left-nav-right')
+                }
             }
         }
     }
@@ -96,7 +101,7 @@
         display: none;
     }
     .right-sub-nav-list{
-        width: 130px;
+        width: 106px;
         align-items: center;
         position: fixed;
         left:94px;
