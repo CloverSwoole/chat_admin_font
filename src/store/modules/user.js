@@ -76,15 +76,18 @@ const user = {
     LoginByUserName({ commit }, userInfo) {
       const username = userInfo.username.trim();
       return new Promise((resolve, reject) => {
-        loginByUserName(username, userInfo.password).then(response => {
-          const data = response.data;
-          window.localStorage.setItem('admin-token',response.data.token);
-          // Cookies.set('Admin-Token', response.data.token);
-          commit('SET_TOKEN', data.token);
-          resolve();
-        }).catch(error => {
-          reject(error);
-        });
+        window.localStorage.setItem('admin-token','iasiuiuuiashiashihuas');
+        commit('SET_TOKEN', 'iasiuiuuiashiashihuas');
+
+        // loginByUserName(username, userInfo.password).then(response => {
+        //   const data = response.data;
+        //   window.localStorage.setItem('admin-token',response.data.token);
+        //   // Cookies.set('Admin-Token', response.data.token);
+        //   commit('SET_TOKEN', data.token);
+        //   resolve();
+        // }).catch(error => {
+        //   reject(error);
+        // });
       });
     },
     /**

@@ -1,0 +1,153 @@
+[
+  {
+    "id": 2,
+    "name": "控制台",
+    "path": "/dashboard",
+    "icon": "speedometer",
+    "component": "@/views/Dashboard.vue",
+    "hidden": "0",
+    "redirect": null,
+    "created_at": "2019-08-23 15:27:04",
+    "updated_at": "2019-08-23 15:27:06",
+    "deleted_at": null,
+    "pid": 0,
+    "title": null,
+    "children": []
+  },
+  {
+    "id": 3,
+    "name": "运费",
+    "path": "/Delivery",
+    "icon": "speedometer",
+    "component": "@/views/Delivery.vue",
+    "hidden": "0",
+    "redirect": null,
+    "created_at": "2019-08-23 15:29:00",
+    "updated_at": "2019-08-23 15:29:03",
+    "deleted_at": null,
+    "pid": 0,
+    "title": null,
+    "children": []
+  },
+  {
+    "id": 4,
+    "name": "介绍",
+    "path": "/introduction",
+    "icon": "thumbsup",
+    "component": "@/views/Introduction.vue",
+    "hidden": "0",
+    "redirect": null,
+    "created_at": "2019-08-23 17:08:00",
+    "updated_at": "2019-08-23 17:08:02",
+    "deleted_at": null,
+    "pid": 0,
+    "title": null,
+    "children": []
+  },
+  {
+    "id": 5,
+    "name": "组件",
+    "path": "/components",
+    "icon": "bookmark",
+    "component": "ViewRoute",
+    "hidden": "0",
+    "redirect": "/components/buttons",
+    "created_at": "2019-08-23 17:09:26",
+    "updated_at": "2019-08-23 17:09:28",
+    "deleted_at": null,
+    "pid": 0,
+    "title": "组件展示",
+    "children": [
+      {
+        "id": 6,
+        "name": "按钮",
+        "path": "/buttons",
+        "icon": "social-youtube",
+        "component": "@/views/components/Buttons.vue",
+        "hidden": "0",
+        "redirect": null,
+        "created_at": "2019-08-23 17:10:28",
+        "updated_at": "2019-08-23 17:10:30",
+        "deleted_at": null,
+        "pid": 5,
+        "title": null,
+        "children": [
+          {
+            "id": 7,
+            "name": "悬停特效",
+            "path": "/hoverbuttons",
+            "icon": "wand",
+            "component": "@/views/components/HoverButtons.vue",
+            "hidden": "0",
+            "redirect": null,
+            "created_at": "2019-08-24 10:25:20",
+            "updated_at": "2019-08-24 10:25:23",
+            "deleted_at": null,
+            "pid": 6,
+            "title": null
+          },
+          {
+            "id": 8,
+            "name": "警告提示",
+            "path": "/alert",
+            "icon": "alert",
+            "component": "@/views/components/Alert.vue",
+            "hidden": "0",
+            "redirect": null,
+            "created_at": "2019-08-24 10:28:07",
+            "updated_at": "2019-08-24 10:28:10",
+            "deleted_at": null,
+            "pid": 6,
+            "title": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "导航",
+    "path": "/navigation",
+    "icon": "wand",
+    "component": "ViewRoute",
+    "hidden": "0",
+    "redirect": null,
+    "created_at": "2019-08-24 10:42:16",
+    "updated_at": "2019-08-24 10:42:18",
+    "deleted_at": null,
+    "pid": 0,
+    "title": "导航管理",
+    "children": [
+      {
+        "id": 10,
+        "name": "导航列表",
+        "path": "/navigation-lists",
+        "icon": "wand",
+        "component": "@/views/navigation/NavigationLists.vue",
+        "hidden": "0",
+        "redirect": null,
+        "created_at": "2019-08-24 10:44:09",
+        "updated_at": "2019-08-24 10:44:11",
+        "deleted_at": null,
+        "pid": 9,
+        "title": null,
+        "children": []
+      },
+      {
+        "id": 11,
+        "name": "添加导航",
+        "path": "/navigation-add",
+        "icon": "wand",
+        "component": "@/views/navigation/NavigationAdd.vue",
+        "hidden": "0",
+        "redirect": null,
+        "created_at": "2019-08-24 11:46:35",
+        "updated_at": "2019-08-24 11:46:40",
+        "deleted_at": null,
+        "pid": 9,
+        "title": null,
+        "children": []
+      }
+    ]
+  }
+]

@@ -88,10 +88,12 @@ const permission = {
          */
         GenerateRoutes({commit}, data) {
             return new Promise(resolve => {
+                data.data = require('./../../get_navigation');
+
                 /**
                  * 获取异步路由
                  */
-                axiosService.getService().post('/Admin/Common/get_navigation').then((data) => {
+                // axiosService.getService().post('/Admin/Common/get_navigation').then((data) => {
                     /**
                      * 处理component
                      */
@@ -111,7 +113,7 @@ const permission = {
                     }
                     commit('SET_ROUTERS', data.data);
                     resolve();
-                });
+                // });
             })
         },
         /**
