@@ -2287,7 +2287,7 @@ base-chart.chart {
     height: 55px;
     padding: .5rem 1rem;
     margin-right: 0;
-    background-image: url(../img/logo.png);
+    color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 150px auto;
