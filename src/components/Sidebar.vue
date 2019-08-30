@@ -4,7 +4,7 @@
             <div class="sidebar">
                 <div class="left-nav-lists">
                     <div class="left-nav-item" v-for="(item,index) in siderbar_routers">
-                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true,name)" v-if="item.children.length > 0" :class="{'aaa':item.name === activeItem}">
+                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true,item.name)" v-if="item.children && item.children.length > 0" :class="{'aaa':item.name === activeItem}">
                             <Icon :type="item.icon" color="white"/>
                             {{ item.name}}
                         </div>
@@ -12,9 +12,9 @@
                             <Icon :type="item.icon" color="white"/>
                             {{ item.name}}
                         </div>
-                        <div class="right-sub-nav-list" v-if="item.children.length > 0">
+                        <div class="right-sub-nav-list" v-if="item.children && item.children.length > 0">
                             <div class="title">{{item.title}}</div>
-                            <router-link tag="div" :to="child.path" v-for="child in item.children" class="right-sub-nav-item nav-link nav-dropdown-toggle">
+                            <router-link tag="div" :to="child.path" v-for="child in item.children" v-bind:key="child.id" class="right-sub-nav-item nav-link nav-dropdown-toggle">
                                 <Icon :type="child.icon"/>
                                 {{ child.name}}
                             </router-link>
@@ -48,9 +48,14 @@
                 this.activeItem = val.matched[0].name;
             }
         },
+        created()
+        {
+            // console.log();
+            this.activeItem = window.localStorage.getItem('last_route_name');
+        },
         methods: {
             /**
-             * 点击一级导航
+             * 跳转到指定路由
              * @param path
              * @constructor
              */
@@ -63,6 +68,7 @@
                     }
                 }
                 e.target.parentElement.classList.toggle('one-selected');
+                window.localStorage.setItem('last_route_name',name);
                 this.$router.push({path:path});
                 if(len){
                     document.body.classList.add('left-nav-right')
