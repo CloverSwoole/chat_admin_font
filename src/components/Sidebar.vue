@@ -3,8 +3,8 @@
         <nav class="sidebar-nav">
             <div class="sidebar">
                 <div class="left-nav-lists">
-                    <div class="left-nav-item" v-for="(item,index) in siderbar_routers">
-                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true,item.name)" v-if="item.children && item.children.length > 0" :class="{'aaa':item.name === activeItem}">
+                    <div class="left-nav-item" v-for="(item,index) in siderbar_routers" :key="index" :class="{'one-selected':ifShowActive(item)}">
+                        <div class="left-nav-item-one nav-link nav-dropdown-toggle" @click="GoToRoute(item.children[0].path,true,item.name)" v-if="item.children && item.children.length > 0">
                             <Icon :type="item.icon" color="white"/>
                             {{ item.name}}
                         </div>
@@ -46,11 +46,11 @@
         watch:{
             $route(val){
                 this.activeItem = val.matched[0].name;
+                console.log(this.activeItem)
             }
         },
         created()
         {
-            // console.log();
             this.activeItem = window.localStorage.getItem('last_route_name');
         },
         methods: {
@@ -74,6 +74,17 @@
                     document.body.classList.add('left-nav-right')
                 }else{
                     document.body.classList.remove('left-nav-right')
+                }
+            },
+            ifShowActive(data){
+                if(data.children)
+                if(data.name  == this.activeItem){
+                    if(data.children.length > 0){
+                        document.body.classList.add('left-nav-right')
+                    }
+                    return true
+                }else{
+                    return false
                 }
             }
         }
