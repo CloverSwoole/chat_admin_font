@@ -15,7 +15,7 @@
                         <div class="right-sub-nav-list" v-if="item.children.length > 0">
                             <div class="title">{{item.title}}</div>
                             <router-link tag="div" :to="child.path" v-for="child in item.children" class="right-sub-nav-item nav-link nav-dropdown-toggle">
-                                <Icon :type="child.icon" color="white"/>
+                                <Icon :type="child.icon"/>
                                 {{ child.name}}
                             </router-link>
                         </div>
@@ -46,17 +46,9 @@
         watch:{
             $route(val){
                 this.activeItem = val.matched[0].name;
-                console.log(this.activeItem)
             }
         },
         methods: {
-            handleClick(index) {
-                this.routes[index].selected = true;
-                console.log(this.routes[index]);
-                return ;
-                e.preventDefault();
-                e.target.parentElement.classList.toggle('open')
-            },
             /**
              * 点击一级导航
              * @param path
