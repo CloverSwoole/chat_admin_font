@@ -8,10 +8,14 @@
                 <i-input v-model="path" placeholder="路径"></i-input>
             </Form-item>
             <Form-item label="图标">
-                <i-input v-model="icon" placeholder="图标"></i-input>
+                <select v-model="icon">
+                    <option v-for="item in icon_lists" v-bind:value="item"><Icon v-bind:type="item"/>{{item}}</option>
+                </select>
             </Form-item>
             <Form-item label="组件">
-                <i-input v-model="component" placeholder="组件"></i-input>
+                <select v-model="component">
+                    <option v-for="(item,key) in view_list" v-bind:value="key">{{key}}</option>
+                </select>
             </Form-item>
             <Form-item label="是否隐藏">
                 <i-input v-model="hidden" placeholder="是否隐藏"></i-input>
@@ -27,6 +31,7 @@
 
 <script>
     import axiosService from "../../utils/axiosService";
+    import ViewComponentLoad from "../../utils/ViewComponentLoad";
     export default {
         name: "NavigationAdd",
         data () {
@@ -37,6 +42,7 @@
                 component:"",
                 hidden:0,
                 redirect:"",
+                view_list:ViewComponentLoad.components,
                 icon_lists:[
                     "ios-add",
                     "md-add",

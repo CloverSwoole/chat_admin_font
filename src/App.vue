@@ -35,7 +35,6 @@
             name() {
                 return this.$route.name
             },
-
             list() {
                 return this.$route.matched
             }
