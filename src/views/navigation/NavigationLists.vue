@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import axiosService from './../../utils/axiosService';
+    import navigation from "../../api/navigation";
     export default {
         name: 'NavigationLists',
         data () {
@@ -102,7 +102,7 @@
             }
         },
         created:function(){
-            axiosService.getService().post('/Admin/Navigation/lists').then((data)=>{
+            navigation.getLists().then((data)=>{
                 this.table = data.data;
             });
         },
@@ -111,12 +111,18 @@
             {
 
             },
+            /**
+             * 删除导航
+             * @param index
+             */
             deleteNavigation:function(index){
-                axiosService.getService().post('/Admin/Navigation/remove',{ids:[this.table[index].id]}).then((data)=>{
+                navigation.deleteNavigation([this.table[index].id]).then((data)=>{
                     if(data.data.status == 200){
                         this.table.shift(index,1);
                     }
                     console.log(data.data);
+                }).catch((error)=>{
+                    console.log(error);
                 });
             }
         },

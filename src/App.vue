@@ -31,6 +31,10 @@
             AppFooter,
             Breadcrumb
         },
+        data(){
+            return {
+            }
+        },
         computed: {
             name() {
                 return this.$route.name

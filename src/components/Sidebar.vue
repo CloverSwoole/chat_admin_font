@@ -26,31 +26,35 @@
     </div>
 </template>
 <script>
-    import {mapGetters} from 'vuex';
-
+    import router from '../router';
+    import navigation from "../api/navigation";
     /**
      * 导航组件
      */
     export default {
         name: 'sidebar',
-        computed: {
-            ...mapGetters([
-                'siderbar_routers'
-            ])
-        },
         data(){
             return {
+                siderbar_routers:[],
                 activeItem:'',
             };
         },
-        watch:{
-            $route(val){
-                this.activeItem = val.matched[0].name;
-                console.log(this.activeItem)
-            }
-        },
         created()
         {
+            /**
+             * 获取导航
+             */
+            navigation.getRoutes().then((data)=>{
+                /**
+                 * 添加路由
+                 */
+                router.addRoutes(data);
+                /**
+                 * 设置遍历的数据
+                 */
+                this.siderbar_routers = data;
+            });
+
             this.activeItem = window.localStorage.getItem('last_route_name');
         },
         methods: {

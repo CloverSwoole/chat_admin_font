@@ -33,8 +33,8 @@
 </template>
 
 <script>
-    import axiosService from "../../utils/axiosService";
     import ViewComponentLoad from "../../utils/ViewComponentLoad";
+    import navigation from "../../api/navigation";
     export default {
         name: "NavigationAdd",
         data () {
@@ -65,8 +65,8 @@
                 ],
                 cityList:[
                     {
-                        value: 'New York',
-                        label: 'New York'
+                        value: 'New',
+                        label: 'New'
                     },
                     {
                         value: 'London',
@@ -93,16 +93,7 @@
         },
         methods:{
             add:function(){
-                axiosService.getService().post('/Admin/Navigation/create',{
-                    name:this.name,
-                    path:this.path,
-                    icon:this.icon,
-                    component:this.component,
-                    hidden:this.hidden,
-                    redirect:this.redirect,
-                }).then((data)=>{
-                    console.log(data.data);
-                });
+                navigation.addNavigation(this.name,this.path,this.icon,this.component,this.hidden,this.redirect);
             },
         }
     }

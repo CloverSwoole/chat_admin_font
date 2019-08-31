@@ -6,6 +6,7 @@ import HoverButtons from "./../views/components/HoverButtons.vue";
 import Alert from "./../views/components/Alert.vue";
 import NavigationLists from "./../views/navigation/NavigationLists";
 import NavigationAdd from "./../views/navigation/NavigationAdd";
+import Form from "../views/components/Form";
 
 /**
  * 组件
@@ -20,6 +21,7 @@ const components = {
     '@/views/components/Alert.vue':Alert, // Alert警告提示
     '@/views/navigation/NavigationLists.vue':NavigationLists, // 导航列表
     '@/views/navigation/NavigationAdd.vue':NavigationAdd, // 添加导航
+    '@views/components/Form.vue':Form, // 表单演示
     "ViewRoute": {
         render(c) {
             return c('router-view')

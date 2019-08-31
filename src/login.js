@@ -35,25 +35,27 @@ router.beforeEach((to, from, next) => {
         NProgress.done();
         return;
     }
-    if(store.getters.addRouters.length <= 0){
-        /**
-         * 生成可访问的路由表
-         */
-        store.dispatch('GenerateRoutes', {}).then(() => {
-            /**
-             * 动态添加可访问路由表
-             */
-            router.addRoutes(store.getters.addRouters);
-            next({...to});
-        }).catch(() => {
-            store.dispatch('FedLogOut').then(() => {
-                next({ path: '/login' })
-            })
-        })
-    }else{
-        store.dispatch('getNowRoutes', to);
-        next();
-    }
+    next();
+
+    // if(store.getters.addRouters.length <= 0){
+    //     /**
+    //      * 生成可访问的路由表
+    //      */
+    //     store.dispatch('GenerateRoutes', {}).then(() => {
+    //         /**
+    //          * 动态添加可访问路由表
+    //          */
+    //         router.addRoutes(store.getters.addRouters);
+    //         next({...to});
+    //     }).catch(() => {
+    //         store.dispatch('FedLogOut').then(() => {
+    //             next({ path: '/login' })
+    //         })
+    //     })
+    // }else{
+    //     store.dispatch('getNowRoutes', to);
+    //     next();
+    // }
 })
 /**
  * 导航守卫 用于处理进度条
