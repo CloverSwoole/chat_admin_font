@@ -11,6 +11,9 @@
                 <select v-model="icon">
                     <option v-for="item in icon_lists" v-bind:value="item"><Icon v-bind:type="item"/>{{item}}</option>
                 </select>
+                <Select v-model="icon" style="width:200px">
+                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                </Select>
             </Form-item>
             <Form-item label="组件">
                 <select v-model="component">
@@ -59,7 +62,33 @@
                     "ios-alert-outline",
                     "md-alert",
                     "ios-american-football",
-                ]
+                ],
+                cityList:[
+                    {
+                        value: 'New York',
+                        label: 'New York'
+                    },
+                    {
+                        value: 'London',
+                        label: 'London'
+                    },
+                    {
+                        value: 'Sydney',
+                        label: 'Sydney'
+                    },
+                    {
+                        value: 'Ottawa',
+                        label: 'Ottawa'
+                    },
+                    {
+                        value: 'Paris',
+                        label: 'Paris'
+                    },
+                    {
+                        value: 'Canberra',
+                        label: 'Canberra'
+                    }
+                ],
             }
         },
         methods:{
